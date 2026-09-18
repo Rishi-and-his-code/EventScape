@@ -15,7 +15,12 @@ EventScape/
 ├── requirements.txt     # Python deps (opencv, numpy, matplotlib, PyQt5)
 ├── UNITY_ENVIRONMENT.txt  # Unity / Blender stack notes for the 3D app
 ├── PROJECT_CONTEXT.md
-└── README.md
+├── README.md
+└── Unity/               # Unity scaffolding + C# stubs (scaffold-only so far)
+    └── EventScape/
+        ├── Assets/
+        │   └── Scripts/
+        └── Packages/
 ```
 
 ## Phase 2–3: Baseline pipeline setup
@@ -45,3 +50,8 @@ python src/main.py
 ## Unity app (main project)
 
 See `PROJECT_CONTEXT.md` and `UNITY_ENVIRONMENT.txt` for the Virtual Auditorium tech stack (Unity 2022.3 LTS, URP, Cinemachine, etc.).
+
+### Current status (scaffold-only)
+- Added Unity folder layout + C# stubs for the core systems (camera, placement, UI, scene manager).
+- Next: open/install a Unity 2022.3 LTS project, import these scripts, and build the first minimal scene.
+- Progress log: `docs/PROGRESS.md`.
