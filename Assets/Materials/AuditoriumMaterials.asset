@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5495e396834df490096d6ac18537a47c, type: 3}
+  m_Name: AuditoriumMaterials
+  m_EditorClassIdentifier: Assembly-CSharp::AuditoriumMaterialLibrary
+  floor: {fileID: 2100000, guid: 1762f815527ff45f7b5b2e244bc7372d, type: 2}
+  aisle: {fileID: 2100000, guid: 713589d6c3c014f4488ac49ba512dfb4, type: 2}
+  wall: {fileID: 2100000, guid: c0acc8123aff34e438226505f14ce51b, type: 2}
+  ceiling: {fileID: 2100000, guid: f864eff42f39249d2b95c6cb8f4ae540, type: 2}
+  acousticPanel: {fileID: 2100000, guid: cfad6f9bd02614047a904e6bd858c871, type: 2}
+  trim: {fileID: 2100000, guid: df20e916a3ff24334b48b6cba724b8a4, type: 2}
+  column: {fileID: 2100000, guid: 027a19e6a5fa94662a404753c3ca6dee, type: 2}
+  stageWood: {fileID: 2100000, guid: ad5cbbc9190ce4b8d9d47981fc25a99d, type: 2}
+  stageTop: {fileID: 2100000, guid: 677109a4f403347eab0d10c61110c4b5, type: 2}
+  backdrop: {fileID: 2100000, guid: 185c57f0f2bc54e2bba2e6323701bda0, type: 2}
+  accent: {fileID: 2100000, guid: 8357b292c2bf947dba8c57ff3040153f, type: 2}
+  door: {fileID: 2100000, guid: 2128bae784d22436cb498ee6b2d08d57, type: 2}
+  benchWood: {fileID: 2100000, guid: aa5552bdfe7c04a5db6c51f73f00d7ec, type: 2}
+  furnitureMetal: {fileID: 2100000, guid: e2c062a275790450ea387402451c278c, type: 2}
+  tableTop: {fileID: 2100000, guid: 6f510426474914481adba6e48159e6ea, type: 2}
+  flowerPot: {fileID: 2100000, guid: 6d3d4e8165aa247eda0e4f3a37f82620, type: 2}
+  furnitureSoil: {fileID: 2100000, guid: 7f09d2c91d182447b926f8768db9c3bd, type: 2}
+  foliage: {fileID: 2100000, guid: b9d9943f5b5ed4e6ab946c4a22ffc4ae, type: 2}
+  classroomDeskBlue: {fileID: 2100000, guid: 29880defc50dc46e6a48dab583415310, type: 2}
+  classroomDeskTop: {fileID: 2100000, guid: df55d424849a64f79b853e8a48931cb2, type: 2}
+  classroomPerforation: {fileID: 2100000, guid: 956548b64bae6496b8b6ecb26ede77bd, type: 2}
+  chairBlue: {fileID: 2100000, guid: 60da5d784f68b46278ddf24ecdcee635, type: 2}
+  chairMetal: {fileID: 2100000, guid: bfd38e3de811e4fe78e53163ed8adc94, type: 2}
+  woodHoney: {fileID: 2100000, guid: 9ace08fd911874de1be7b776427256fc, type: 2}
+  woodHoneyLight: {fileID: 2100000, guid: 7cfbb839079674517a92a8f3711f44f4, type: 2}
+  woodHoneyDark: {fileID: 2100000, guid: cbeff256bcb104882a1fa981c8359e5e, type: 2}
+  woodWalnut: {fileID: 2100000, guid: 46b7ff20405384067a05aecf0b47f2a1, type: 2}
+  woodWalnutLight: {fileID: 2100000, guid: d2a130715e8a14fb7a90c332d65af421, type: 2}
+  stageTimber: {fileID: 2100000, guid: a5b64d66d36574375996acba42f6ca3b, type: 2}
+  wallPlaster: {fileID: 2100000, guid: 68ede0c3daee44a7196b73e748908fcd, type: 2}
+  stoneTile: {fileID: 2100000, guid: d9a3795a49be042c28d73b973d9dc9d5, type: 2}
+  stoneTileLight: {fileID: 2100000, guid: 4cccf2fc3bf1e4340883640e60cdb978, type: 2}
+  stoneTileDark: {fileID: 2100000, guid: e79b27e19c1d74bc69d45710be47172e, type: 2}
+  structuralMetal: {fileID: 2100000, guid: 96159d7496cf7419f9f5ec4b9c926139, type: 2}
+  acousticPanelLight: {fileID: 2100000, guid: b59384594a81148e6875682fbb9f39f3, type: 2}
+  acousticPanelAlternate: {fileID: 2100000, guid: 86409f2f33c41419c8dd7d217fc121c8, type: 2}
+  acousticFabric: {fileID: 2100000, guid: f1e5690dcc0f44e1085d95d98d409078, type: 2}
+  projectionScreen: {fileID: 2100000, guid: 4730407adb7714b3f91a5ec9a6976a7f, type: 2}
+  rollerBlind: {fileID: 2100000, guid: 33b1d1376774945ff8ebe2be677c02e5, type: 2}
+  speakerFinish: {fileID: 2100000, guid: f4c72769a311b447488c962f20b6ab2d, type: 2}
+  speakerGrille: {fileID: 2100000, guid: f8f93ca9efa4d4876a64ba2513fb5bfd, type: 2}
+  fixtureFinish: {fileID: 2100000, guid: e458564d58cd64618bd585a2869dd99f, type: 2}
+  fixtureEmissive: {fileID: 2100000, guid: 1f33e08ff32fd4e4bb684dfc052c8eb1, type: 2}
+  bannerRed: {fileID: 2100000, guid: 2e1cecf45f9ed4b819ac7ba70d0e72f9, type: 2}
+  bannerOrange: {fileID: 2100000, guid: f80776f4d72c94a279f2caa30fceb522, type: 2}
+  bannerMagenta: {fileID: 2100000, guid: a4b39caea99fa4401aeb2d467e49d9b8, type: 2}
+  bannerArtworkMaterial: {fileID: 2100000, guid: 6142169713fca47d6ba0645fa0edd6ac, type: 2}
+  bannerLeftMaterial: {fileID: 2100000, guid: 333734ac4c0bc40b48f9b2206ce74687, type: 2}
+  bannerRightMaterial: {fileID: 2100000, guid: 7b361f716c24643b2816be3854a01a0f, type: 2}
+  rearLogoMaterial: {fileID: 2100000, guid: fbc25a76f7f714e109f37d439c375a13, type: 2}
+  podiumWood: {fileID: 2100000, guid: 7479e414585af47c38d5e85fc2d16ade, type: 2}
+  doorLeaf: {fileID: 2100000, guid: 608deca38e7ba4028981c5e07687e937, type: 2}
+  doorGlass: {fileID: 2100000, guid: 7c9048d381443415ba16e5079e85fca6, type: 2}
+  fanMetal: {fileID: 2100000, guid: 87cf73cfc1a4544409f97b9ecf40e7e8, type: 2}
+  fanBlade: {fileID: 2100000, guid: 71105013712814a54963fa6ea7a6a0be, type: 2}
+  rearLogoArtwork: {fileID: 2800000, guid: 9f49705c3f5c149c5a2c6b3eb854e9ba, type: 3}
+  stageBannerArtwork: {fileID: 2800000, guid: 6c48b63c52b342e3bc08badfa9d96bec, type: 3}
+  stageBannerLeftArtwork: {fileID: 2800000, guid: 6c48b63c52b342e3bc08badfa9d96bec, type: 3}
+  stageBannerRightArtwork: {fileID: 2800000, guid: 8499214518674b0aa8e5aa51507a51c6, type: 3}

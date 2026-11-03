@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9297705bcedaf4b0088c9a59f7237295, type: 3}
+  m_Name: AuditoriumDemoSettings
+  m_EditorClassIdentifier: Assembly-CSharp::AuditoriumDemoSettings
+  hallWidth: 16
+  hallDepth: 25
+  wallHeight: 3.65
+  wallThickness: 0.15
+  doorwayWidth: 1.9
+  doorwayHeight: 2.35
+  doorwayInsetFromRight: 1.55
+  walkthroughSpawnX: -5
+  walkthroughSpawnDepthFraction: 0.36
+  stageWidth: 9.5
+  stageDepth: 3.7
+  stageHeight: 0.45
+  stageBackClearance: 0
+  templateSideAisleClearance: 0.85
+  templateCentralAisleWidth: 1.2
+  templateFrontClearance: 1.1
+  templateRearClearance: 1
+  theatreTemplateRows: 8
+  classroomTemplateRows: 5
+  roundtableTemplateCount: 4
+  sideCladdingHeightFraction: 0.42
+  sideCladdingHeight: 0
+  floorTileSize: 0.72
+  floorGroutWidth: 0.0035
+  pilasterWidth: 0.28
+  sideWallBaySpacing: 3.55
+  rollerBlindWidth: 2.15
+  rollerBlindHeight: 1.55
+  wallFanDiameter: 0.62
+  wallFanMountHeight: 2.55
+  stageBannerWidth: 1.55
+  stageBannerHeight: 1.55
+  warmLightKelvin: 3000
+  downlightIntensity: 1.35
+  stageSpotIntensity: 2.4
+  rearLogoWashIntensity: 1.55
+  floorBaseColor: {r: 0.54, g: 0.55, b: 0.56, a: 1}
+  showReferenceSeating: 0
+  referenceSeatingRows: 5
+  referenceSeatingRowSpacing: 1.2
+  rearLogoArtwork: {fileID: 2800000, guid: 9f49705c3f5c149c5a2c6b3eb854e9ba, type: 3}
+  stageBannerArtwork: {fileID: 0}
+  stageBannerLeftArtwork: {fileID: 2800000, guid: 6c48b63c52b342e3bc08badfa9d96bec, type: 3}
+  stageBannerRightArtwork: {fileID: 2800000, guid: 8499214518674b0aa8e5aa51507a51c6, type: 3}
