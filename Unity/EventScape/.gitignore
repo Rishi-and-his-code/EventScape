@@ -1,0 +1,28 @@
+# Unity
+[Ll]ibrary/
+Assets/.
+Assets/Editor/Generated/
+Assets/StreamingAssets/*.asset
+Assets/StreamingAssets/aa*
+Logs/
+MemoryCaptures/
+obj/
+Temp/
+
+# Build artifacts
+Build/
+Builds/
+.
+
+# Visual Studio / Rider
+.vs/
+.idea/
+*.sln.iml
+
+# OS
+.DS_Store
+
+# Unity meta files are needed; DO NOT ignore *.meta
+
+# Packages lock files (optional)
+Packages/packages-lock.json
