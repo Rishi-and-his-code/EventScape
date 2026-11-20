@@ -25,6 +25,7 @@ Recordings/
 *.mdb
 *.opendb
 *.VC.db
+*.env
 
 # OS files
 .DS_Store
