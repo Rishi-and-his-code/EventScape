@@ -23,7 +23,7 @@ cp .env .env.local   # optional: keep a local override
 python server.py
 ```
 
-The server starts on **http://localhost:5000**.
+The server starts on **http://127.0.0.1:5055** (port 5055 avoids macOS AirPlay on 5000).
 
 ## Configuration (.env)
 
@@ -32,7 +32,7 @@ The server starts on **http://localhost:5000**.
 | `OPENAI_API_KEY`  | *(required)*                    | API key for the upstream LLM         |
 | `OPENAI_BASE_URL` | `http://localhost:20128/v1`     | Base URL of the OpenAI-compatible API|
 | `OPENAI_MODEL`    | `coding-combo`                  | Model name to use for completions    |
-| `PORT`            | `5000`                          | Port the Flask server listens on     |
+| `PORT`            | `5055`                          | Port the Flask server listens on     |
 | `FLASK_DEBUG`     | `0`                             | Set to `1` for auto-reload           |
 
 ## API Endpoints

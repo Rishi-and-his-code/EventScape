@@ -32,4 +32,5 @@ Recordings/
 Thumbs.db
 
 .tools-venv/
+backend/.venv/
 unity-compile.log

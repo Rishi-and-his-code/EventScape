@@ -35,30 +35,39 @@ public sealed class AIChatPanel : MonoBehaviour
         chatService.MessageReceived += OnMessage;
         chatService.ProcessingChanged += OnProcessingChanged;
 
+        if (parentCanvas != null)
+        {
+            parentCanvas.pixelPerfect = true;
+            CanvasScaler scaler = parentCanvas.GetComponent<CanvasScaler>();
+            if (scaler != null)
+                scaler.dynamicPixelsPerUnit = 1f;
+        }
+
         // Main panel container — docked to right side
         panelRoot = CreatePanel(parentCanvas.transform, "AI Chat Panel",
-            new Vector2(340f, 0f),
+            new Vector2(380f, 0f),
             new Vector2(1f, 0f), new Vector2(1f, 1f),
-            new Vector2(-170f, 0f),
+            new Vector2(-190f, 0f),
             PanelBackground);
         RectTransform panelRect = panelRoot.GetComponent<RectTransform>();
-        panelRect.sizeDelta = new Vector2(340f, 0f);
-        panelRect.anchoredPosition = new Vector2(-170f, 0f);
+        panelRect.sizeDelta = new Vector2(380f, 0f);
+        panelRect.anchoredPosition = new Vector2(-190f, 0f);
 
         // Header / Title bar
         GameObject titleBar = CreatePanel(panelRoot.transform, "Title Bar",
-            new Vector2(0f, 44f),
+            new Vector2(0f, 48f),
             new Vector2(0f, 1f), new Vector2(1f, 1f),
-            new Vector2(0f, -22f),
+            new Vector2(0f, -24f),
             HeaderBackground);
         RectTransform titleRect = titleBar.GetComponent<RectTransform>();
-        titleRect.sizeDelta = new Vector2(0f, 44f);
+        titleRect.sizeDelta = new Vector2(0f, 48f);
 
-        Text titleText = CreateText(titleBar.transform, "AI Layout Assistant", 14, TextAnchor.MiddleCenter);
+        Text titleText = CreateText(titleBar.transform, "AI Layout Assistant", 18, TextAnchor.MiddleCenter, FontStyle.Bold);
         RectTransform titleTextRect = titleText.GetComponent<RectTransform>();
         titleTextRect.anchorMin = Vector2.zero;
         titleTextRect.anchorMax = Vector2.one;
-        titleTextRect.sizeDelta = Vector2.zero;
+        titleTextRect.offsetMin = Vector2.zero;
+        titleTextRect.offsetMax = Vector2.zero;
         titleText.color = TextColor;
 
         // Message scroll container
@@ -67,8 +76,8 @@ public sealed class AIChatPanel : MonoBehaviour
         RectTransform scrollRect = scrollArea.GetComponent<RectTransform>();
         scrollRect.anchorMin = new Vector2(0f, 0f);
         scrollRect.anchorMax = new Vector2(1f, 1f);
-        scrollRect.offsetMin = new Vector2(10f, 96f);
-        scrollRect.offsetMax = new Vector2(-10f, -50f);
+        scrollRect.offsetMin = new Vector2(12f, 108f);
+        scrollRect.offsetMax = new Vector2(-12f, -56f);
         scrollArea.GetComponent<Image>().color = new Color(0.03f, 0.04f, 0.06f, 0.85f);
 
         // Content container
@@ -81,14 +90,16 @@ public sealed class AIChatPanel : MonoBehaviour
         messageContent.sizeDelta = new Vector2(0f, 0f);
 
         VerticalLayoutGroup vlg = content.GetComponent<VerticalLayoutGroup>();
-        vlg.spacing = 8f;
-        vlg.padding = new RectOffset(8, 8, 8, 8);
+        vlg.spacing = 10f;
+        vlg.padding = new RectOffset(10, 10, 10, 10);
         vlg.childForceExpandWidth = true;
         vlg.childForceExpandHeight = false;
         vlg.childControlHeight = true;
         vlg.childControlWidth = true;
+        vlg.childAlignment = TextAnchor.UpperCenter;
 
         ContentSizeFitter csf = content.GetComponent<ContentSizeFitter>();
+        csf.horizontalFit = ContentSizeFitter.FitMode.Unconstrained;
         csf.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
 
         messageScrollRect = scrollArea.GetComponent<ScrollRect>();
@@ -96,17 +107,18 @@ public sealed class AIChatPanel : MonoBehaviour
         messageScrollRect.horizontal = false;
         messageScrollRect.vertical = true;
         messageScrollRect.movementType = ScrollRect.MovementType.Clamped;
+        messageScrollRect.scrollSensitivity = 24f;
 
         scrollArea.AddComponent<RectMask2D>();
 
         // Input section at bottom
         GameObject inputArea = CreatePanel(panelRoot.transform, "Input Area",
-            new Vector2(0f, 88f),
+            new Vector2(0f, 100f),
             new Vector2(0f, 0f), new Vector2(1f, 0f),
-            new Vector2(0f, 44f),
+            new Vector2(0f, 50f),
             HeaderBackground);
         RectTransform inputAreaRect = inputArea.GetComponent<RectTransform>();
-        inputAreaRect.sizeDelta = new Vector2(0f, 88f);
+        inputAreaRect.sizeDelta = new Vector2(0f, 100f);
 
         // Input Field
         GameObject inputObj = new GameObject("Input Field", typeof(RectTransform), typeof(Image), typeof(InputField));
@@ -114,10 +126,12 @@ public sealed class AIChatPanel : MonoBehaviour
         RectTransform inputRect = inputObj.GetComponent<RectTransform>();
         inputRect.anchorMin = new Vector2(0f, 0.5f);
         inputRect.anchorMax = new Vector2(1f, 0.5f);
-        inputRect.sizeDelta = new Vector2(-84f, 40f);
-        inputRect.anchoredPosition = new Vector2(-36f, 12f);
+        inputRect.sizeDelta = new Vector2(-96f, 44f);
+        inputRect.anchoredPosition = new Vector2(-40f, 14f);
         inputObj.GetComponent<Image>().color = new Color(0.10f, 0.14f, 0.18f, 1f);
         inputField = inputObj.GetComponent<InputField>();
+        inputField.lineType = InputField.LineType.MultiLineNewline;
+        inputField.characterLimit = 500;
 
         // Text inside Input Field
         GameObject inputTextObj = new GameObject("Text", typeof(RectTransform), typeof(Text));
@@ -125,12 +139,10 @@ public sealed class AIChatPanel : MonoBehaviour
         RectTransform inputTextRect = inputTextObj.GetComponent<RectTransform>();
         inputTextRect.anchorMin = Vector2.zero;
         inputTextRect.anchorMax = Vector2.one;
-        inputTextRect.offsetMin = new Vector2(8f, 2f);
-        inputTextRect.offsetMax = new Vector2(-8f, -2f);
+        inputTextRect.offsetMin = new Vector2(10f, 6f);
+        inputTextRect.offsetMax = new Vector2(-10f, -6f);
         Text inputText = inputTextObj.GetComponent<Text>();
-        inputText.font = GetSafeFont();
-        inputText.fontSize = 13;
-        inputText.color = TextColor;
+        ConfigureText(inputText, 16, TextColor, FontStyle.Normal, TextAnchor.UpperLeft);
         inputField.textComponent = inputText;
 
         // Placeholder Text
@@ -139,41 +151,38 @@ public sealed class AIChatPanel : MonoBehaviour
         RectTransform phRect = placeholderObj.GetComponent<RectTransform>();
         phRect.anchorMin = Vector2.zero;
         phRect.anchorMax = Vector2.one;
-        phRect.offsetMin = new Vector2(8f, 2f);
-        phRect.offsetMax = new Vector2(-8f, -2f);
+        phRect.offsetMin = new Vector2(10f, 6f);
+        phRect.offsetMax = new Vector2(-10f, -6f);
         Text phText = placeholderObj.GetComponent<Text>();
-        phText.font = GetSafeFont();
-        phText.fontSize = 13;
-        phText.color = MutedTextColor;
+        ConfigureText(phText, 16, MutedTextColor, FontStyle.Italic, TextAnchor.UpperLeft);
         phText.text = "Describe layout (e.g. 5 rows chairs)...";
-        phText.fontStyle = FontStyle.Italic;
         inputField.placeholder = phText;
 
         // Send Button
         sendButton = CreateButton(inputArea.transform, "Send", "Send",
             new Vector2(1f, 0.5f), new Vector2(1f, 0.5f),
-            new Vector2(-32f, 12f), new Vector2(56f, 40f), ButtonActive);
+            new Vector2(-36f, 14f), new Vector2(64f, 44f), ButtonActive, 16);
         sendButton.onClick.AddListener(OnSendClicked);
 
         // Clear Chat Button
         clearButton = CreateButton(inputArea.transform, "Clear", "Clear Chat",
             new Vector2(0.5f, 0f), new Vector2(0.5f, 0f),
-            new Vector2(0f, 14f), new Vector2(90f, 22f), ButtonIdle);
+            new Vector2(0f, 16f), new Vector2(110f, 26f), ButtonIdle, 14);
         clearButton.onClick.AddListener(OnClearClicked);
 
         // Status Label (e.g. "Thinking...")
-        statusLabel = CreateText(inputArea.transform, "", 11, TextAnchor.MiddleCenter);
+        statusLabel = CreateText(inputArea.transform, "", 14, TextAnchor.MiddleLeft, FontStyle.Bold);
         RectTransform statusRect = statusLabel.GetComponent<RectTransform>();
         statusRect.anchorMin = new Vector2(0f, 0f);
-        statusRect.anchorMax = new Vector2(0.35f, 0f);
-        statusRect.sizeDelta = new Vector2(0f, 22f);
-        statusRect.anchoredPosition = new Vector2(40f, 14f);
+        statusRect.anchorMax = new Vector2(0.4f, 0f);
+        statusRect.sizeDelta = new Vector2(0f, 26f);
+        statusRect.anchoredPosition = new Vector2(48f, 16f);
         statusLabel.color = ButtonActive;
 
         // Screen Edge Toggle Button ("AI")
         toggleButton = CreateButton(parentCanvas.transform, "Toggle AI", "AI",
             new Vector2(1f, 0.5f), new Vector2(1f, 0.5f),
-            new Vector2(-18f, 0f), new Vector2(36f, 72f), ButtonActive);
+            new Vector2(-20f, 0f), new Vector2(40f, 80f), ButtonActive, 18);
         toggleButton.onClick.AddListener(TogglePanel);
 
         inputField.onEndEdit.AddListener(OnInputSubmit);
@@ -247,22 +256,39 @@ public sealed class AIChatPanel : MonoBehaviour
             return;
 
         GameObject bubble = new GameObject(isUser ? "User Msg" : "AI Msg",
-            typeof(RectTransform), typeof(Image), typeof(VerticalLayoutGroup));
+            typeof(RectTransform), typeof(Image), typeof(VerticalLayoutGroup), typeof(ContentSizeFitter), typeof(LayoutElement));
         bubble.transform.SetParent(messageContent, false);
 
         Image bg = bubble.GetComponent<Image>();
         bg.color = isUser ? UserBubbleColor : AssistantBubbleColor;
 
         VerticalLayoutGroup bvlg = bubble.GetComponent<VerticalLayoutGroup>();
-        bvlg.padding = new RectOffset(10, 10, 6, 6);
+        bvlg.padding = new RectOffset(12, 12, 10, 10);
         bvlg.childForceExpandWidth = true;
         bvlg.childForceExpandHeight = false;
         bvlg.childControlHeight = true;
         bvlg.childControlWidth = true;
 
-        Text msgText = CreateText(bubble.transform, text, 12,
-            isUser ? TextAnchor.UpperRight : TextAnchor.UpperLeft);
+        ContentSizeFitter bubbleFit = bubble.GetComponent<ContentSizeFitter>();
+        bubbleFit.horizontalFit = ContentSizeFitter.FitMode.Unconstrained;
+        bubbleFit.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+
+        LayoutElement bubbleLayout = bubble.GetComponent<LayoutElement>();
+        bubbleLayout.minHeight = 36f;
+        bubbleLayout.flexibleWidth = 1f;
+
+        Text msgText = CreateText(bubble.transform, text, 16,
+            isUser ? TextAnchor.UpperRight : TextAnchor.UpperLeft, FontStyle.Normal);
         msgText.color = TextColor;
+        msgText.lineSpacing = 1.08f;
+
+        LayoutElement textLayout = msgText.gameObject.AddComponent<LayoutElement>();
+        textLayout.flexibleWidth = 1f;
+        textLayout.minHeight = 22f;
+
+        ContentSizeFitter textFit = msgText.gameObject.AddComponent<ContentSizeFitter>();
+        textFit.horizontalFit = ContentSizeFitter.FitMode.Unconstrained;
+        textFit.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(messageContent);
         Canvas.ForceUpdateCanvases();
@@ -289,6 +315,20 @@ public sealed class AIChatPanel : MonoBehaviour
         return font;
     }
 
+    private static void ConfigureText(Text text, int fontSize, Color color, FontStyle style, TextAnchor alignment)
+    {
+        text.font = GetSafeFont();
+        text.fontSize = fontSize;
+        text.fontStyle = style;
+        text.color = color;
+        text.alignment = alignment;
+        text.horizontalOverflow = HorizontalWrapMode.Wrap;
+        text.verticalOverflow = VerticalWrapMode.Overflow;
+        text.raycastTarget = false;
+        text.supportRichText = false;
+        text.alignByGeometry = false;
+    }
+
     private static GameObject CreatePanel(Transform parent, string name, Vector2 size,
         Vector2 anchorMin, Vector2 anchorMax, Vector2 position, Color color)
     {
@@ -304,7 +344,7 @@ public sealed class AIChatPanel : MonoBehaviour
     }
 
     private static Button CreateButton(Transform parent, string name, string label,
-        Vector2 anchorMin, Vector2 anchorMax, Vector2 position, Vector2 size, Color color)
+        Vector2 anchorMin, Vector2 anchorMax, Vector2 position, Vector2 size, Color color, int fontSize)
     {
         GameObject btnObj = new GameObject(name, typeof(RectTransform), typeof(Image), typeof(Button));
         btnObj.transform.SetParent(parent, false);
@@ -322,28 +362,24 @@ public sealed class AIChatPanel : MonoBehaviour
         cb.pressedColor = Color.Lerp(color, Color.black, 0.20f);
         btn.colors = cb;
 
-        Text txt = CreateText(btnObj.transform, label, 12, TextAnchor.MiddleCenter);
+        Text txt = CreateText(btnObj.transform, label, fontSize, TextAnchor.MiddleCenter, FontStyle.Bold);
         RectTransform txtRt = txt.GetComponent<RectTransform>();
         txtRt.anchorMin = Vector2.zero;
         txtRt.anchorMax = Vector2.one;
-        txtRt.sizeDelta = Vector2.zero;
+        txtRt.offsetMin = Vector2.zero;
+        txtRt.offsetMax = Vector2.zero;
         txt.color = Color.white;
 
         return btn;
     }
 
-    private static Text CreateText(Transform parent, string content, int fontSize, TextAnchor alignment)
+    private static Text CreateText(Transform parent, string content, int fontSize, TextAnchor alignment, FontStyle style)
     {
         GameObject textObj = new GameObject("Text", typeof(RectTransform), typeof(Text));
         textObj.transform.SetParent(parent, false);
         Text text = textObj.GetComponent<Text>();
-        text.font = GetSafeFont();
-        text.fontSize = fontSize;
-        text.color = TextColor;
-        text.alignment = alignment;
+        ConfigureText(text, fontSize, TextColor, style, alignment);
         text.text = content;
-        text.horizontalOverflow = HorizontalWrapMode.Wrap;
-        text.verticalOverflow = VerticalWrapMode.Overflow;
         return text;
     }
 }

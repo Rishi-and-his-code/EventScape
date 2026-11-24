@@ -7,7 +7,8 @@ using UnityEngine;
 /// </summary>
 public sealed class AIAssistantBootstrap : MonoBehaviour
 {
-    [SerializeField] private string backendUrl = "http://localhost:5000/chat";
+    // Use 5055 — macOS AirPlay / Control Center often owns port 5000 and returns 403.
+    [SerializeField] private string backendUrl = "http://127.0.0.1:5055/chat";
 
     private AIChatService chatService;
     private AIChatPanel chatPanel;

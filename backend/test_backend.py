@@ -4,14 +4,14 @@ EventScape Backend — Automated Test Suite
 ==========================================
 Run with:  python test_backend.py
 Requires:  pip install requests
-Server must be running on http://localhost:5000
+Server must be running on http://127.0.0.1:5055
 """
 
 import sys
 import json
 import requests
 
-BASE_URL = "http://localhost:5000"
+BASE_URL = "http://127.0.0.1:5055"
 PASS = 0
 FAIL = 0
 

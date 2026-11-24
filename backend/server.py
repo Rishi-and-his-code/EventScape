@@ -213,7 +213,7 @@ def add_cors_headers(response):
 
 if __name__ == "__main__":
     host = os.getenv("HOST", "127.0.0.1")
-    port = int(os.getenv("PORT", 5000))
+    port = int(os.getenv("PORT", 5055))
     debug = os.getenv("FLASK_DEBUG", "0") == "1"
     logger.info("Starting EventScape backend on %s:%d (model=%s, base_url=%s)",
                 host, port, MODEL, BASE_URL)
